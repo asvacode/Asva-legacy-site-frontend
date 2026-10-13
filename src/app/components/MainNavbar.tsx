@@ -26,6 +26,7 @@ export default function MainNavbar() {
     { name: "About", href: "/about" },
     { name: "Journey", href: "/journey" },
     { name: "Contact Us", href: "/contact" },
+   { name: "Booking", href: "/booking" },
   ];
 
   return (

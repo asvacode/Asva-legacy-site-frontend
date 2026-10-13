@@ -15,6 +15,7 @@ import EventsTab from "./components/EventsTab";
 import { API_URL } from "@/lib/config";
 import { authFetch } from "@/lib/api";
 import * as reactDynamic from "next/dynamic";
+import Booking from "../booking/page";
 const IncompletePayment = reactDynamic.default(() => import('./components/IncompletePayment').then((c)=> c.default), {ssr: false})
 
 
@@ -93,7 +94,8 @@ export default function DashboardPage() {
           {activeTab === "internships" && <InternshipsTab />}
           {activeTab === "certificates" && <CertificatesTab />}
           {activeTab === "teams" && <JoinTeams />}
-          {activeTab == "events" && <EventsTab />}
+          {activeTab === "events" && <EventsTab />}
+          {String(activeTab) === "Booking" && <Booking />}
         </main>
       </div>
     </div>

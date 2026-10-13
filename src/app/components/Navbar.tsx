@@ -11,6 +11,7 @@ const navLinks = [
   { label: "History", href: "#history" },
   { label: "Execs", href: "#execs" },
   { label: "Events", href: "#events" },
+  { label: "Booking", href: "/booking" },
 ];
 
 export default function Navbar() {
@@ -66,11 +67,21 @@ export default function Navbar() {
 // }, []);
 
   // ── smooth scroll override (fix navbar offset issue)
-  const handleScroll = (e: React.MouseEvent, href: string) => {
+const handleScroll = (e: React.MouseEvent, href: string) => {
+  if (!href || !href.startsWith("#")) {
+    return;
+  }
+
   e.preventDefault();
 
   const el = document.querySelector(href);
-  if (!el) return;
+  
+  // Safeguard: If element doesn't exist on this page, don't crash.
+  // Optionally, you can redirect the user to the home page with the hash if they are on a different page.
+  if (!el) {
+    console.warn(`Element with selector "${href}" not found on this page.`);
+    return;
+  }
 
   const offset = 80;
   const top = el.getBoundingClientRect().top + window.scrollY - offset;
@@ -83,7 +94,7 @@ export default function Navbar() {
 };
 
   // ── magnetic effect
-  const handleMouseMove = (e: any, i: number) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>, i: number) => {
     const el = linkRefs.current[i];
     if (!el) return;
 
