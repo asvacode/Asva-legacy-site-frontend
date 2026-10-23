@@ -12,7 +12,7 @@ export default function PendingStep({ form }: { form: FormData }) {
     <div className="flex flex-col items-center text-center gap-5">
       <CheckCircle2 className="text-green-500" size={50} />
 
-      <h1 className="text-2xl font-bold">You're almost in!</h1>
+      <h1 className="text-2xl font-bold">You are almost in!</h1>
 
       <p className="text-sm text-gray-500 max-w-xs leading-relaxed">
         Hi {form.username}, your registration is under review. Once our team

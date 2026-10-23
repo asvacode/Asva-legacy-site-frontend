@@ -9,6 +9,7 @@ import * as reactDynamic from "next/dynamic";
 const PaystackStep = reactDynamic.default(() => import('./components/PaystackStep').then((c)=> c.default), {ssr: false})
 import PendingStep from "./components/PendingStep";
 import { Step, FormData } from "./components/types";
+import { Button } from "@/components/ui/button";
 
 export const dynamic = "force-dynamic";
 
@@ -24,7 +25,7 @@ export default function JoinPage() {
   });
 
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center relative">
+    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center relative">
 
       {/* 🔙 Back Button */}
       <button
@@ -58,6 +59,13 @@ export default function JoinPage() {
         )}
 
         {step === 3 && <PendingStep form={formData} />}
+
+        <Button
+          onClick={() => router.push("/welcome")}
+          className="h-11 w-full bg-green-80 hover:bg-green-100 rounded-xl mt-2"
+        >
+          Go to Welcome
+        </Button>
       </div>
     </div>
   );

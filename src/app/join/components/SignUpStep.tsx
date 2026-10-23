@@ -105,7 +105,7 @@ export default function SignUpStep({
 
               <Input
                 type={field.type}
-                value={(form as any)[field.name]}
+                value={form[field.name as keyof typeof form]}
                 onChange={(e) =>
                   setForm({ ...form, [field.name]: e.target.value })
                 }
